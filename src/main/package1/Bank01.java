@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class Bank01 {
 
 
+
     public static final int DAYS_IN_YEAR = 365;
     public static final int SCALE = 5;
     public static final int FOUR = 4;

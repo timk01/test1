@@ -15,11 +15,19 @@ import java.util.Scanner;
 
 public class Bank01 {
 
+
     public static final int DAYS_IN_YEAR = 365;
     public static final int SCALE = 5;
     public static final int FOUR = 4;
 
     public static void main(String[] args) {
+        String str = "str";
+        String substring = str.substring(1);
+        System.out.println(str == substring);
+        str.compareTo(substring);
+        str.equals(substring);
+        str.indexOf(1);
+
         System.out.println("All numbers should be non-negative and number!");
         System.out.println("enter the sum: ");
         int sum = getIntValue();

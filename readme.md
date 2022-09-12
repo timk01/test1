@@ -1,1 +1,1 @@
-Here i will post stufy projects for with open access
+Here i will post study projects for with open access

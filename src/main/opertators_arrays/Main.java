@@ -75,5 +75,6 @@ public class Main {
             }
         }
         return Pattern.matches("^_+$", CharBuffer.wrap(bch));
+        //return Pattern.matches("^_+$", Arrays.toString(bch));
     }
 }

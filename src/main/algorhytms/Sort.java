@@ -30,7 +30,7 @@ public class Sort {
         end = System.currentTimeMillis();
         System.out.println("Standart sort alg: " + (end - start));
 
-        //bubbleTest
+        //insertionTest
 
         start = System.currentTimeMillis();
         arr = new int[]{3, 5, 4, 1};
@@ -40,7 +40,7 @@ public class Sort {
         end = System.currentTimeMillis();
         System.out.println("Standart sort alg: " + (end - start));
 
-        //shellSort
+        //shellSortTest
 
         arr = new int[]{12, 34, 54, 2, 3};
         System.out.println("Array before sorting");
@@ -59,6 +59,14 @@ public class Sort {
         return arr;
     }
 
+    static void printArray(int arr[]) {
+        int n = arr.length;
+        for (int i = 0; i < n; ++i) {
+            System.out.print(arr[i] + " ");
+        }
+        System.out.println();
+    }
+
     static int[] bubbleSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
@@ -70,14 +78,6 @@ public class Sort {
             }
         }
         return arr;
-    }
-
-    static void printArray(int arr[]) {
-        int n = arr.length;
-        for (int i = 0; i < n; ++i) {
-            System.out.print(arr[i] + " ");
-        }
-        System.out.println();
     }
 
     static int[] insertionSort(int[] arr) {

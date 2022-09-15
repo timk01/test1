@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
+import static sept15_oop.ATM.CommonInterface.requestNumber;
+
 public class ATMEngine {
 
     private static final int MAX_CURRENCY_IN_VALET = 4;
@@ -19,6 +21,7 @@ public class ATMEngine {
         long sum = CurrencyAmount.getCurrencyAmountArrayValue(currencyAmounts);
 
         User user = new User(
+                1,
                 "Timur Khasmamedov",
                 124_123_456_789_090_12L,
                 1256,
@@ -47,17 +50,18 @@ public class ATMEngine {
         boolean stopAdd;
 
         while (stop) {
-            number = atm.requestNumber();
+            number = requestNumber();
             switch (number) {
                 case 1:
                     if (atm.checkPinCode(user)) {
+                        //tbh here... should be checking for REAL user, but //todo
                         atm.showAddMenu();
                         stopAdd = true;
                         while (stopAdd) {
-                            number = atm.requestNumber();
+                            number = requestNumber();
                             switch (number) {
                                 case 1 -> {
-                                    atm.showCurrentBalance();
+                                    atm.showCurrentBalance(user);
                                     atm.showAddMenu();
                                 }
                                 case 2 -> {

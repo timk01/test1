@@ -3,7 +3,8 @@ package sept15_oop.ATM;
 import java.math.BigDecimal;
 import java.util.Arrays;
 
-public class User {
+public class User implements CommonInterface{
+    private int id;
     private String credentials;
     private long cardNumber;
     private int pinCode;
@@ -11,12 +12,29 @@ public class User {
     private Balance balance;
     private CurrencyAmount[] currencyAmount;
 
-    public User(String credentials, long cardNumber, int pinCode, BigDecimal cash, Balance balance, CurrencyAmount[] currencyAmount) {
+    public User(int id, String credentials, long cardNumber, int pinCode, BigDecimal cash, Balance balance, CurrencyAmount[] currencyAmount) {
+        this.id = id;
         this.credentials = credentials;
         this.cardNumber = cardNumber;
         this.pinCode = pinCode;
         this.cash = cash;
         this.balance = balance;
+        this.currencyAmount = currencyAmount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public CurrencyAmount[] getCurrencyAmount() {
+        return currencyAmount;
+    }
+
+    public void setCurrencyAmount(CurrencyAmount[] currencyAmount) {
         this.currencyAmount = currencyAmount;
     }
 

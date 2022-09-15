@@ -3,7 +3,7 @@ package sept15_oop.ATM;
 import java.math.BigDecimal;
 import java.util.*;
 
-public class ATM {
+public class ATM implements CommonInterface{
     private CurrencyAmount[] currencyAmount;
     private BigDecimal cash;
     private List<User> userList;
@@ -49,22 +49,43 @@ public class ATM {
 
     public void showAddMenu() {
         hashMapAdd.put(1, "Show balance");
-        hashMapAdd.put(2, "Get funds");
+        hashMapAdd.put(2, "Get funds (should be >= 50)");
         hashMapAdd.put(3, "Deposit funds");
         hashMapAdd.forEach((k, v) -> System.out.println(k + ". " + v));
         System.out.println("Please enter one number from menu above or any other positive number to exit:");
     }
 
     public void getFunds(User user) {
-
+        BigDecimal currentUserBalance = user.getBalance().getBalance();
+        int withdrawNumber = CommonInterface.requestNumber();
+        if (currentUserBalance.compareTo(BigDecimal.ZERO) < 0) {
+            System.out.println("0 balance");
+        } else if (withdrawNumber % 50 != 0) {
+            System.out.println("mimimal amount of sum should be >= 50");
+        } else if (withdrawNumber % 5000 != 0 && currentUserBalance.compareTo(BigDecimal.valueOf(5000L)) > 0) {
+            //todo well, it works as is. rewrite via switch with Enum
+            int value = currencyAmount[5].getCurrency().getValue();
+            long quantity = currencyAmount[5].getQuantity();
+            System.out.println(value);
+            System.out.println(quantity);
+            System.out.println(cash);
+            cash = cash.subtract(BigDecimal.valueOf(withdrawNumber));
+            currencyAmount[5].setQuantity(--quantity);
+            System.out.println("after withdraw quantity " + quantity);
+            System.out.println("after withdraw cash " + cash);
+        }
     }
 
     public void putFundsOnAccount() {
 
     }
 
-    public void showCurrentBalance() {
+    public void getLeftFunds(User user) {
 
+    }
+
+    public void showCurrentBalance(User user) {
+        System.out.println(user.getBalance());
     }
 
     public boolean checkPinCode(User user) {
@@ -74,7 +95,7 @@ public class ATM {
         boolean isPinCodeGood;
         StringBuilder msg = new StringBuilder();
         do {
-            number = requestNumber();
+            number = CommonInterface.requestNumber();
             if (number == user.getPinCode()) {
                 isPinCodeGood = true;
             } else {
@@ -85,23 +106,6 @@ public class ATM {
             msg.setLength(0);
         } while (!(isPinCodeGood) && tries > 0);
         return isPinCodeGood;
-    }
-
-    public int requestNumber() {
-        Scanner scanner = new Scanner(System.in);
-        int n = -1;
-        boolean isGoodInput;
-        do {
-            if (scanner.hasNextInt()) {
-                n = scanner.nextInt();
-                scanner.nextLine();
-                isGoodInput = n >= 0;
-            } else {
-                scanner.nextLine();
-                isGoodInput = false;
-            }
-        } while (!isGoodInput);
-        return n;
     }
 
     @Override

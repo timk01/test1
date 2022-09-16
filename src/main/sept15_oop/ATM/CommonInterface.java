@@ -3,7 +3,7 @@ package sept15_oop.ATM;
 import java.util.Scanner;
 
 public interface CommonInterface {
-    public static int requestNumber() {
+    static int requestNumber() {
         Scanner scanner = new Scanner(System.in);
         int n = -1;
         boolean isGoodInput;

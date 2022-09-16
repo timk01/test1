@@ -60,19 +60,29 @@ public class ATM implements CommonInterface{
         int withdrawNumber = CommonInterface.requestNumber();
         if (currentUserBalance.compareTo(BigDecimal.ZERO) < 0) {
             System.out.println("0 balance");
-        } else if (withdrawNumber % 50 != 0) {
-            System.out.println("mimimal amount of sum should be >= 50");
-        } else if (withdrawNumber % 5000 != 0 && currentUserBalance.compareTo(BigDecimal.valueOf(5000L)) > 0) {
-            //todo well, it works as is. rewrite via switch with Enum
+        } else if (withdrawNumber / 5000 > 0 && currentUserBalance.compareTo(BigDecimal.valueOf(5000L)) > 0) {
+            int moneyLeftAfterWithdrawing = withdrawNumber % 5000;
+            cash = cash.subtract(BigDecimal.valueOf(5000));
+
             int value = currencyAmount[5].getCurrency().getValue();
             long quantity = currencyAmount[5].getQuantity();
-            System.out.println(value);
-            System.out.println(quantity);
-            System.out.println(cash);
-            cash = cash.subtract(BigDecimal.valueOf(withdrawNumber));
+
             currencyAmount[5].setQuantity(--quantity);
             System.out.println("after withdraw quantity " + quantity);
             System.out.println("after withdraw cash " + cash);
+            if (withdrawNumber / 1000 > 0 && currentUserBalance.compareTo(BigDecimal.valueOf(1000L)) > 0) {
+                moneyLeftAfterWithdrawing = withdrawNumber % 1000;
+                cash = cash.subtract(BigDecimal.valueOf(1));
+
+                value = currencyAmount[4].getCurrency().getValue();
+                quantity = currencyAmount[4].getQuantity();
+
+                currencyAmount[4].setQuantity(--quantity);
+                System.out.println("after withdraw quantity " + quantity);
+                System.out.println("after withdraw cash " + cash);
+            }
+        } else if (withdrawNumber % 50 != 0) {
+            System.out.println("mimimal amount of sum should be >= 50");
         }
     }
 

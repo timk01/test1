@@ -47,6 +47,7 @@ public class Canteen {
         if ((numberOfVisitors + numberOfNewVisitors) > capacity) {
             throw new CapacityIfOverException("Слишком много посетителей");
         }
+
         numberOfVisitors += numberOfNewVisitors;
         System.out.println("Теперь в столовой " + numberOfVisitors + " посетителей");
     }

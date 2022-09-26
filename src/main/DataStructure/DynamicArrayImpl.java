@@ -30,9 +30,6 @@ public class DynamicArrayImpl {
 
     public void delete(int index) {
         if (index < size && index >= 0) {
-            /*
-             * values = [1,2,4,5,0,0,0,0,0,0,0,0]
-             * */
             for (int i = index; i < size; i++) {
                 values[i] = values[i + 1];
             }

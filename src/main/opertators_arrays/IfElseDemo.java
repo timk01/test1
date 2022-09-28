@@ -10,5 +10,6 @@ public class IfElseDemo {
             String str = sc.nextInt() == 1 ? "ура" : "не ура";
             System.out.println(str);
         }
+        sc.close();
     }
 }

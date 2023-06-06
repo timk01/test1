@@ -1,1 +1,1 @@
-Otus bootcamp tasks
+Otus bootcamp tasks (most just a learnin ones)
